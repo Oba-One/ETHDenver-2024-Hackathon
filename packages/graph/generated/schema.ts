@@ -78,17 +78,17 @@ export class Campaign extends Entity {
     this.set("metadata", Value.fromString(value));
   }
 
-  get creator(): string {
+  get creator(): Bytes {
     let value = this.get("creator");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toString();
+      return value.toBytes();
     }
   }
 
-  set creator(value: string) {
-    this.set("creator", Value.fromString(value));
+  set creator(value: Bytes) {
+    this.set("creator", Value.fromBytes(value));
   }
 
   get team(): Array<string> {
