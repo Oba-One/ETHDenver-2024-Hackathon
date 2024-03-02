@@ -1,0 +1,12 @@
+# WAVES TYPES
+type Campaign @entity(immutable: false) {
+  id: Bytes! # Set to `waveNft.id.concat(synthNft.id)`
+  hypercertID: String! # Hypercert id
+  metadata: String! # Metadata contains title , description, logo, banner, details, start, end
+  creator: String! # Creator address
+  team: [String!]! # Team addresses
+  capitals: [String!]! # Capital addresses
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

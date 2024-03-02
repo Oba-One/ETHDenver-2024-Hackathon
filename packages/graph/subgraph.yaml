@@ -1,0 +1,28 @@
+specVersion: 0.0.5
+description: Camp Green Subgraph for querying Campaign data
+schema:
+  file: ./schema.graphql
+features:
+  - fullTextSearch
+  - nonFatalErrors
+dataSources:
+  - name: CampaignToken
+    kind: ethereum
+    network: base-testnet
+    source:
+      address: "0x935D99dC0f48f28794f13d4135d5Fe22A19ccE4c"
+      abi: CampaignToken
+      startBlock: 10349571
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CampaignCreated
+      abis:
+        - name: CampaignToken
+          file: ../contracts/out/Campaign.sol/CampaignToken.json
+      eventHandlers:
+        - event: CampaignCreated(indexed address,indexed address,uint256,string[],string)
+          handler: handleCampaignCreated
+      file: ./src/campaign-token.ts
